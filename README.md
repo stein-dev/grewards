@@ -5,5 +5,8 @@ GRewards in Python
 - Analytics Freeeedooom
 # Instruction
     install python3 (windows,linux,android via termux)
+    pkg install git (for termux)
+    git clone https://github.com/stein-dev/grewards-py
     pip install requests
+    cd grewards-py
     python3 grewards.py
