@@ -9,6 +9,8 @@ import time
 
 from requests import api
 
+filename = "info.json"
+
 # CONSTANT. DO NOT CHANGE!!!
 url_otp = "https://api.sugar.digitalventures.ph/api/v1/user/otp"
 url_verify = "https://api.sugar.digitalventures.ph/api/v1/user/verify"
@@ -65,11 +67,11 @@ def redeemRewards():
 
 def redeem(str1, str2, str3):
     payload = {
-            "X-GlobeRewards-Mobile": readFile('info.json', 'mobile'),
-            "X-GlobeRewards-Device": readFile('info.json', 'devid'),
+            "X-GlobeRewards-Mobile": readFile(filename, 'mobile'),
+            "X-GlobeRewards-Device": readFile(filename, 'devid'),
             "X-GlobeRewards-Device-Type": "android",
-            "X-GlobeRewards-UUID": readFile('info.json', 'uuid'),
-            "X-GlobeRewards-Token": readFile('info.json', 'token'),
+            "X-GlobeRewards-UUID": readFile(filename, 'uuid'),
+            "X-GlobeRewards-Token": readFile(filename, 'token'),
             "X-Api-Key": api_key,
             "Content-Type": "application/json; charset=UTF-8",
             "Host": url_host,
@@ -124,11 +126,11 @@ def viewPoints():
 """)
     
     payload = {
-        "X-GlobeRewards-Mobile": readFile('info.json','mobile'),
-        "X-GlobeRewards-Device": readFile('info.json','devid'),
+        "X-GlobeRewards-Mobile": readFile(filename,'mobile'),
+        "X-GlobeRewards-Device": readFile(filename,'devid'),
         "X-GlobeRewards-Device-Type": "android",
-        "X-GlobeRewards-UUID": readFile('info.json','uuid'),
-        "X-GlobeRewards-Token": readFile('info.json','token'),
+        "X-GlobeRewards-UUID": readFile(filename,'uuid'),
+        "X-GlobeRewards-Token": readFile(filename,'token'),
         "X-Api-Key": api_key,
         "Host": url_host,
         "Accept-Encoding": "gzip, deflate",
@@ -153,8 +155,8 @@ def viewPoints():
 
 def register():
     payload = {
-        "X-GlobeRewards-Mobile": readFile('info.json','mobile'),
-        "X-GlobeRewards-Device": readFile('info.json','devid'),
+        "X-GlobeRewards-Mobile": readFile(filename,'mobile'),
+        "X-GlobeRewards-Device": readFile(filename,'devid'),
         "X-GlobeRewards-Device-Type": "android",
         "X-Api-Key": api_key,
         "X-GlobeRewards-App-Version": "3.2.35",
@@ -197,7 +199,7 @@ def verifyOTP():
 
     payload = {
         "X-GlobeRewards-Mobile": number,
-        "X-GlobeRewards-Device": readFile('info.json','devid'),
+        "X-GlobeRewards-Device": readFile(filename,'devid'),
         "X-GlobeRewards-Device-Type": "android",
         "X-Api-Key": api_key,
         "Content-Type": "application/x-www-form-urlencoded",
@@ -232,11 +234,11 @@ def getOTP():
    
     global number
     number = input("Input mobile #: ")
-    updateFile("info.json", "mobile", number)
+    updateFile(filename, "mobile", number)
     
     payload = {
         "X-GlobeRewards-Mobile": number,
-        "X-GlobeRewards-Device": readFile('info.json','devid'),
+        "X-GlobeRewards-Device": readFile(filename,'devid'),
         "X-GlobeRewards-Device-Type": "android",
         "X-Api-Key": api_key,
         "Host": url_host,
@@ -348,7 +350,7 @@ GRewards by @pigscanfly
         print("Something's wrong i can feel it.")        
 
 clearConsole()
-createFile("info.json")   
+createFile(filename)   
 while True:
     main()
 
